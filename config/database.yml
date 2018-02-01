@@ -1,0 +1,12 @@
+development:
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: 25
+
+test:
+  url: <%= ENV["TEST_DATABASE_URL"] %>
+
+staging:
+  pool: 25
+
+production:
+  pool: 40

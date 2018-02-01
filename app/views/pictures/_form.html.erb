@@ -1,0 +1,24 @@
+<%= form_with(model: [project, picture], local: true) do |form| %>
+  <% if picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+      <ul>
+      <% picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= image_tag picture.url %>
+
+  <% if project.picture_classes.any? %>
+    <div class="field">
+      <%= form.label :picture_class_id %>
+      <% project.picture_classes.each do |picture_class| %>
+        <%= form.radio_button :picture_class_id, picture_class.id %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

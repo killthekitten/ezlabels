@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  rejected: false
+  picture_class: one
+
+two:
+  url: MyString
+  rejected: false
+  picture_class: two
