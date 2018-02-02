@@ -8,8 +8,15 @@ class InspectForm {
   }
 
   bindEvents() {
-    this.$form.on('click', '.js-approve-btn', this.processApprove);
-    this.$form.on('click', '.js-reject-btn', this.processReject);
+    this.$form.on('click', '.js-approve-btn', (event) => {
+      event.stopPropagation();
+      this.processApprove();
+    });
+
+    this.$form.on('click', '.js-reject-btn', (event) => {
+      event.stopPropagation();
+      this.processReject();
+    });
 
     $(document).keypress((event) => {
       if (event.which >= 48 && event.which <= 57) {
@@ -38,7 +45,7 @@ class InspectForm {
   }
 
   setRejected(value) {
-    this.$rejectedField.val(value ? 1 : 0);
+    this.$rejectedField.val(value ? 'true' : 'false');
   }
 
   submit() {
@@ -46,7 +53,7 @@ class InspectForm {
   }
 }
 
-$(document).ready(function() {
+document.addEventListener('turbolinks:load', function() {
   $('.js-picture-inspect-form').each(function(_, $form) {
     new InspectForm($form);
   });

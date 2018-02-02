@@ -14,17 +14,23 @@
   - if project.picture_classes.any?
     .panel.panel-default
       .panel-body
-        = f.input :picture_class_ids, collection: picture_classes_for_form(project), as: :check_boxes,
-          wrapper_html: { class: 'js-picture-class-select' }
+        .col-sm-6
+          = f.input :picture_class_ids, collection: picture_classes_for_form(project), as: :check_boxes,
+            wrapper_html: { class: 'js-picture-class-select' }
 
-  = f.input :rejected, as: :hidden
+          = f.input :rejected, as: :hidden
 
-  = link_to '#', class: 'btn btn-lg btn-success js-approve-submit' do
-    span.glyphicon.glyphicon-ok
-    '
-    | <u>A</u>pprove
-  '
-  = link_to '#', class: 'btn btn-lg btn-danger js-reject-submit' do
-    span.glyphicon.glyphicon-remove
-    '
-    | <u>R</u>eject
+        .col-sm-6
+          - if picture.inspected?
+            p
+              i Current status: #{picture.rejected? ? 'Rejected' : 'Approved'}
+
+          = link_to '#', class: 'btn btn-lg btn-success js-approve-btn' do
+            span.glyphicon.glyphicon-ok
+            '
+            | <u>A</u>pprove
+          '
+          = link_to '#', class: 'btn btn-lg btn-danger js-reject-btn' do
+            span.glyphicon.glyphicon-remove
+            '
+            | <u>R</u>eject
