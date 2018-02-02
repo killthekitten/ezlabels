@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get :next_picture, to: 'pictures#next'
     resources :pictures, only: [:show] do
       member do
-        post :inspect
+        patch :inspect
       end
     end
   end

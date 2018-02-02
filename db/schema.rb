@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_02_01_163731) do
+ActiveRecord::Schema.define(version: 2018_02_02_130553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 2018_02_01_163731) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_picture_classes_on_project_id"
+  end
+
+  create_table "picture_classes_pictures", force: :cascade do |t|
+    t.integer "picture_id"
+    t.integer "picture_class_id"
   end
 
   create_table "pictures", force: :cascade do |t|

@@ -1,0 +1,30 @@
+= simple_form_for picture, url: inspect_project_picture_path(project, picture),
+  html: { class: 'js-picture-inspect-form' } do |f|
+  - if picture.errors.any?
+    #error_explanation
+      h2 #{pluralize(picture.errors.count, "error")} prohibited this picture from being saved:
+
+      ul
+      - picture.errors.full_messages.each do |message|
+        li= message
+
+  .thumbnail
+    = image_tag picture.url
+
+  - if project.picture_classes.any?
+    .panel.panel-default
+      .panel-body
+        = f.input :picture_class_ids, collection: picture_classes_for_form(project), as: :check_boxes,
+          wrapper_html: { class: 'js-picture-class-select' }
+
+  = f.input :rejected, as: :hidden
+
+  = link_to '#', class: 'btn btn-lg btn-success js-approve-submit' do
+    span.glyphicon.glyphicon-ok
+    '
+    | <u>A</u>pprove
+  '
+  = link_to '#', class: 'btn btn-lg btn-danger js-reject-submit' do
+    span.glyphicon.glyphicon-remove
+    '
+    | <u>R</u>eject

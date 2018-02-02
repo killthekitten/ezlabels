@@ -1,13 +1,12 @@
 class PicturesController < ApplicationController
   before_action :set_project
-  before_action :set_picture, only: [:show, :approve, :reject]
+  before_action :set_picture, only: [:show, :inspect]
 
   def show
   end
 
   def inspect
     @picture.inspected = true
-    @picture.rejected = rejected
 
     if @picture.update(picture_params)
       redirect_to_next_page
@@ -29,14 +28,14 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:rejected, :picture_class_id)
+      params.require(:picture).permit(:rejected, picture_class_ids: [])
     end
 
     def redirect_to_next_page
       next_picture = @project.pictures.where(inspected: false).first
 
-      if next_picture
-        redirect_to project_picture_path(@project, @picture)
+      if next_picture.present?
+        redirect_to project_picture_path(@project, next_picture)
       else
         redirect_to @project, notice: "No pictures left, you're good!"
       end
