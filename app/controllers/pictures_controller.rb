@@ -7,6 +7,7 @@ class PicturesController < ApplicationController
 
   def inspect
     @picture.inspected = true
+    @picture.user = current_user
 
     if @picture.update(picture_params)
       redirect_to_next_page
@@ -32,13 +33,21 @@ class PicturesController < ApplicationController
     end
 
     def redirect_to_next_page
-      next_picture = @project.pictures.where(inspected: false).first
+      next_picture = get_first_uninspected
+
+      if next_picture.blank? && @project.generate_samples_for(current_user) > 0
+        next_picture = get_first_uninspected
+      end
 
       if next_picture.present?
         redirect_to project_picture_path(@project, next_picture)
       else
         redirect_to @project, notice: "No pictures left, you're good!"
       end
+    end
+
+    def get_first_uninspected
+      @project.pictures.uninspected_for(current_user).first
     end
 
     def set_project
