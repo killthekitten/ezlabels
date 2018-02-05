@@ -4,6 +4,7 @@ lock "~> 3.10.1"
 set :application, ENV['CAP_APP_NAME']
 set :repo_url, ENV['CAP_REPO_URL']
 
+set :use_sudo, false
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -24,7 +25,7 @@ set :repo_url, ENV['CAP_REPO_URL']
 append :linked_files, "config/master.key", ".env.production"
 
 # Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
