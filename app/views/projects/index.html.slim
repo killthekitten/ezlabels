@@ -14,7 +14,7 @@ table.table.table-striped
       tr
         td= link_to project.id, project_path(project)
         td= project.title
-        td= project.content
+        td= truncate project.content
         td=l project.created_at
         td
           = link_to t('.show', :default => t("helpers.links.show")), project_path(project), :class => 'btn btn-default btn-xs'
