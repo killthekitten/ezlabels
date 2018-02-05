@@ -9,4 +9,5 @@ staging:
   pool: 25
 
 production:
+  url: <%= ENV["DATABASE_URL"] %>
   pool: 40
