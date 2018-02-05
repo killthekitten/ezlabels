@@ -3,4 +3,5 @@ class ApplicationController < ActionController::Base
                                      fail('BASIC_AUTH_NAME not provided, check .env'),
                                password: ENV['BASIC_AUTH_PASSWORD'].presence ||
                                          fail('BASIC_AUTH_PASSWORD not provided, check .env')
+  before_action :authenticate_user! 
 end
