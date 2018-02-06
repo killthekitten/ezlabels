@@ -48,7 +48,7 @@ class PicturesController < ApplicationController
     end
 
     def get_first_uninspected
-      @project.pictures.uninspected_for(current_user).first
+      Project.uncached { @project.pictures.uninspected_for(current_user).first }
     end
 
     def set_project
