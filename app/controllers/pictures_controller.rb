@@ -35,7 +35,8 @@ class PicturesController < ApplicationController
     def redirect_to_next_page
       next_picture = get_first_uninspected
 
-      if next_picture.blank? && @project.generate_samples_for(current_user) > 0
+      if next_picture.blank?
+        @project.generate_samples_for(current_user)
         next_picture = get_first_uninspected
       end
 
