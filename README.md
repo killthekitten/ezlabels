@@ -1,5 +1,27 @@
 # Ezlabels
 
+## Prerequisites
+
+You should have Ruby and PostgreSQL installed locally. The easiest way to do this depends on your OS and your taste.
+
+The recommended way to deal with Ruby is via [rbenv](https://github.com/rbenv/rbenv). Don't forget to install [ruby-build](https://github.com/rbenv/ruby-build).
+
+This will show you the required ruby version:
+
+```
+cat .ruby-version
+```
+
+### PostgreSQL: macOS
+
+The easiest way to install is via [Postgres App](https://postgresapp.com/).
+
+### PostgreSQL: Linux
+
+There are more choices for Linux, but this one usually works well:
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04
+
 
 ## Configuration
 
