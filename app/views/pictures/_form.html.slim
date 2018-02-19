@@ -19,9 +19,9 @@
           = f.input :picture_class_ids, collection: picture_classes_for_form(project), as: :check_boxes,
             wrapper_html: { class: 'js-picture-class-select' }
 
-          = f.input :rejected, as: :hidden
-
       .col-sm-6
+        = f.input :rejected, as: :hidden
+        
         - if picture.inspected?
           p
             i Current status: #{picture.rejected? ? 'Rejected' : 'Approved'}
