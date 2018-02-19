@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require activestorage
 //= require turbolinks
+//= require chart
 //= require_tree .

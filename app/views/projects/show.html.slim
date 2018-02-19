@@ -11,6 +11,10 @@ p
   br
   = simple_format @project.content
 
+.row
+  .col-sm-12
+    = pie :pie_chart, { width: 500, height: 500 }, @project.pie_data.to_json
+
 = link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn btn-default'
 '
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_project_path(@project), :class => 'btn btn-default'

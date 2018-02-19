@@ -28,4 +28,8 @@ class Project < ApplicationRecord
         project_id = #{id}
     SQL
   end
+
+  def pie_data
+    @pie_data ||= PieData.new(project: self)
+  end
 end

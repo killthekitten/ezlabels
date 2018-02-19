@@ -82,6 +82,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    chart (0.1.4.9)
+      rails
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.1.0)
@@ -273,6 +275,7 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.1)
   capistrano3-puma
   capybara (~> 2.15)
+  chart
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
