@@ -46,3 +46,32 @@ The variable names are self-descriptive, but you are especially interested in `D
 bundle install
 bundle exec rake db:setup
 ```
+
+## TODO: Provisioning
+
+This will do for now:
+
+https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04
+
+We're waiting for someone smart to submit a Pull Request with Docker or Ansible workflow.
+
+## Deploy
+
+Deploy is done via [Capistrano](). If you're a fan of [Heroku](https://heroku.com), it is probably going to work as is.
+
+### Configuration
+
+Change `CAP_APP_NAME` and `CAP_REPO_URL` in `.env` to those you want to use.
+
+Then, setup the remote directory structure:
+
+```
+bundle exec cap production deploy initial
+bundle exec cap production puma:nginx_config
+```
+
+### Deploy
+
+```
+bundle exec cap production deploy
+```
