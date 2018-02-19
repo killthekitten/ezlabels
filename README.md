@@ -42,6 +42,7 @@ nano .env
 The variable names are self-descriptive, but you are especially interested in `DATABASE_URL` (more on how it works you can find in [this section of Rails Guidelines](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database)).
 
 ## Basic setup
+
 ```
 bundle install
 bundle exec rake db:setup
@@ -57,7 +58,7 @@ We're waiting for someone smart to submit a Pull Request with Docker or Ansible 
 
 ## Deploy
 
-Deploy is done via [Capistrano](). If you're a fan of [Heroku](https://heroku.com), it is probably going to work as is.
+Deploy is done via [Capistrano](http://capistranorb.com/). If you're a fan of [Heroku](https://heroku.com), it is probably going to work as is.
 
 ### Configuration
 
