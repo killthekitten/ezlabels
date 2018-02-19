@@ -41,6 +41,17 @@ nano .env
 
 The variable names are self-descriptive, but you are especially interested in `DATABASE_URL` (more on how it works you can find in [this section of Rails Guidelines](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database)).
 
+### Environment Variables
+
+| Variable Name         | Description                                                    |
+| --------------------- | -------------------------------------------------------------- |
+| DATABASE_URL          | `postgres://postgres:postgres@localhost/ezlabels_development`  |
+| BASIC_AUTH_NAME       | Basic Auth Username (required, TODO: Remove entirely)          |
+| BASIC_AUTH_PASSWORD   | Basic Auth Password                                            |
+| CAP_APP_NAME          | App name one the server (i.e. folder name at `/var/www/`)      |
+| CAP_REPO_URL          | Where to pull the repo from to the server                      |
+| DEVISE_SECRET         | Salt for Devise ruby gem (you user passwords)                  |
+
 ## Basic setup
 
 ```
