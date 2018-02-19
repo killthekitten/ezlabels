@@ -1,24 +1,26 @@
-# README
+# Ezlabels
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Configuration
 
-* Ruby version
+The app follows the https://12factor.net/ guidelines. All configuration can be done via env variables ([dotenv](https://github.com/bkeepers/dotenv) is responsible for that). 
 
-* System dependencies
+First, copy the configuration file sample:
 
-* Configuration
+```
+cp .env.example .env
+```
 
-* Database creation
+Second, edit it with your editor of choice:
 
-* Database initialization
+```
+nano .env
+```
 
-* How to run the test suite
+The variable names are self-descriptive, but you are especially interested in `DATABASE_URL` (more on how it works you can find in [this section of Rails Guidelines](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database)).
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Basic setup
+```
+bundle install
+bundle exec rake db:setup
+```
