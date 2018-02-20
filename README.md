@@ -1,5 +1,27 @@
 # Ezlabels
 
+Ezlabels is an Open Source tool that solves the task of labeling a custom dataset quickly, efficiently and privately. It is designed for installation on your local machine or your own servers and to be accessed by multiple users simultaneously within one or more markup projects.
+
+The basic flow that is implemented right now is built around the task of tagging an image dataset (you can define desired classes) and accepting or rejecting images (binary classification). We plan on making this process easily extendable in Rails fashion, with custom engines and gems.
+
+## What's implemented and what's planned
+
+- [x] Multiple users
+- [x] Multiple projects
+- [x] Multiple users can work on the same project (each one works on their own part) 
+- [x] Deploy process
+- [x] Image tagging
+- [x] Image binary classification
+- [x] Hotkeys
+- [x] Simple charts
+- [ ] Export/import as CSV (currently you can only manipulate data via `psql` or `rails console`) (#9 and #8)
+- [ ] Engines for text and video labeling, object detection and background segmentation
+- [ ] REST API for bots and pluggable services (#20)
+- [ ] Data comments (#19)
+- [ ] Data flows (i.e. take a subset of an existing dataset and create an independent project with it) (#18)
+- [ ] S3/AWS integration (#10)
+- [ ] Role model and project visibility
+
 ## Prerequisites
 
 You should have Ruby and PostgreSQL installed locally. The easiest way to do this depends on your OS and your taste.
@@ -43,14 +65,14 @@ The variable names are self-descriptive, but you are especially interested in `D
 
 ### Environment Variables
 
-| Variable Name         | Description                                                    |
-| --------------------- | -------------------------------------------------------------- |
-| DATABASE_URL          | `postgres://postgres:postgres@localhost/ezlabels_development`  |
-| BASIC_AUTH_NAME       | Basic Auth Username (required, TODO: Remove entirely)          |
-| BASIC_AUTH_PASSWORD   | Basic Auth Password                                            |
-| CAP_APP_NAME          | App name one the server (i.e. folder name at `/var/www/`)      |
-| CAP_REPO_URL          | Where to pull the repo from to the server                      |
-| DEVISE_SECRET         | Salt for Devise ruby gem (you user passwords)                  |
+| Variable Name         | Description                                                            |
+| --------------------- | ---------------------------------------------------------------------- |
+| DATABASE_URL          | `postgres://postgres:postgres@localhost/ezlabels_development`          |
+| BASIC_AUTH_NAME       | Basic Auth Username (required, TODO: Remove entirely)                  |
+| BASIC_AUTH_PASSWORD   | Basic Auth Password                                                    |
+| CAP_APP_NAME          | App name one the server (i.e. folder name at `/var/www/`)              |
+| CAP_REPO_URL          | Where to pull the repo from to the server                              |
+| DEVISE_SECRET         | Salt for Devise ruby gem (your user passwords will be created with it) |
 
 ## Basic setup
 
