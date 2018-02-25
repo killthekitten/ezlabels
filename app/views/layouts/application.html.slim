@@ -25,7 +25,8 @@ html lang="en"
             - if user_signed_in?
               ul.nav.navbar-nav
                 li= link_to "Projects", projects_path
-
+              .navbar-right
+                = link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-brand"
     .container
       .row
         .col-lg-12
