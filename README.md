@@ -8,7 +8,7 @@ The basic flow that is implemented right now is built around the task of tagging
 
 - [x] Multiple users
 - [x] Multiple projects
-- [x] Multiple users can work on the same project (each one works on their own part) 
+- [x] Multiple users can work on the same project (each one works on their own part)
 - [x] Deploy process
 - [x] Image tagging
 - [x] Image binary classification
@@ -47,7 +47,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgres
 
 ## Configuration
 
-The app follows the https://12factor.net/ guidelines. All configuration can be done via env variables ([dotenv](https://github.com/bkeepers/dotenv) is responsible for that). 
+The app follows the https://12factor.net/ guidelines. All configuration can be done via env variables ([dotenv](https://github.com/bkeepers/dotenv) is responsible for that).
 
 First, copy the configuration file sample:
 
@@ -68,8 +68,6 @@ The variable names are self-descriptive, but you are especially interested in `D
 | Variable Name         | Description                                                            |
 | --------------------- | ---------------------------------------------------------------------- |
 | DATABASE_URL          | `postgres://postgres:postgres@localhost/ezlabels_development`          |
-| BASIC_AUTH_NAME       | Basic Auth Username (required, TODO: Remove entirely)                  |
-| BASIC_AUTH_PASSWORD   | Basic Auth Password                                                    |
 | CAP_APP_NAME          | App name one the server (i.e. folder name at `/var/www/`)              |
 | CAP_REPO_URL          | Where to pull the repo from to the server                              |
 | DEVISE_SECRET         | Salt for Devise ruby gem (your user passwords will be created with it) |
