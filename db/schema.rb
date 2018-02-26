@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_02_05_155443) do
+ActiveRecord::Schema.define(version: 2018_02_27_195420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,30 +37,42 @@ ActiveRecord::Schema.define(version: 2018_02_05_155443) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
-  create_table "picture_classes", force: :cascade do |t|
+  create_table "dataset_items", force: :cascade do |t|
+    t.text "url", null: false
+    t.bigint "dataset_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dataset_id"], name: "index_dataset_items_on_dataset_id"
+  end
+
+  create_table "datasets", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "data_type", null: false
+  end
+
+  create_table "label_classes", force: :cascade do |t|
     t.bigint "project_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_picture_classes_on_project_id"
+    t.index ["project_id"], name: "index_label_classes_on_project_id"
   end
 
-  create_table "picture_classes_pictures", force: :cascade do |t|
-    t.integer "picture_id"
-    t.integer "picture_class_id"
+  create_table "label_classes_project_labels", force: :cascade do |t|
+    t.integer "label_id"
+    t.integer "label_class_id"
   end
 
-  create_table "pictures", force: :cascade do |t|
-    t.string "url"
+  create_table "labels", force: :cascade do |t|
     t.boolean "rejected", null: false
-    t.bigint "picture_class_id"
+    t.bigint "label_class_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "project_id", null: false
     t.boolean "inspected", default: false, null: false
     t.integer "user_id"
-    t.index ["picture_class_id"], name: "index_pictures_on_picture_class_id"
-    t.index ["project_id"], name: "index_pictures_on_project_id"
+    t.index ["label_class_id"], name: "index_labels_on_label_class_id"
+    t.index ["project_id"], name: "index_labels_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -87,6 +99,6 @@ ActiveRecord::Schema.define(version: 2018_02_05_155443) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "picture_classes", "projects"
-  add_foreign_key "pictures", "picture_classes"
+  add_foreign_key "label_classes", "projects"
+  add_foreign_key "labels", "label_classes"
 end

@@ -1,0 +1,19 @@
+- model_class = Dataset
+.page-header
+  h1=t '.title', default: model_class.model_name.human.titleize
+
+p
+  strong #{model_class.human_attribute_name(:name)}:
+  br
+  = @dataset.name
+p
+  strong #{model_class.human_attribute_name(:item_type)}:
+  br
+  = simple_format @dataset.data_type
+
+
+= link_to "Back", datasets_path, class: 'btn btn-default'
+'
+= link_to "Edit", edit_dataset_path(@dataset), class: 'btn btn-default'
+'
+= link_to "Destroy", dataset_path(@dataset), method: "delete", data: { confirm: "Confirm", default: "Are you sure?" }, class: 'btn btn-danger'

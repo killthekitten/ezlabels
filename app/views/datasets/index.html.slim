@@ -1,0 +1,22 @@
+- model_class = Dataset
+.page-header
+  h1=t '.title', default: model_class.model_name.human.pluralize.titleize
+table.table.table-striped
+  thead
+    tr
+      th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:name)
+      th= model_class.human_attribute_name(:data_type)
+      th=t '.actions', default: t("helpers.actions")
+  tbody
+    - @datasets.each do |dataset|
+      tr
+        td= link_to dataset.id, dataset_path(dataset)
+        td= dataset.name
+        td=  dataset.data_type
+        td
+          = link_to "Show", dataset_path(dataset), class: 'btn btn-default btn-xs'
+          '
+          = link_to "Edit", edit_dataset_path(dataset), class: 'btn btn-default btn-xs'
+          '
+= link_to "Create new", new_dataset_path, class: 'btn btn-primary'
