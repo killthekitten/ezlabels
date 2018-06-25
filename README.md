@@ -4,6 +4,10 @@ Ezlabels is an Open Source tool that solves the task of labeling a custom datase
 
 The basic flow that is implemented right now is built around the task of tagging an image dataset (you can define desired classes) and accepting or rejecting images (binary classification). We plan on making this process easily extendable in Rails fashion, with custom engines and gems.
 
+## Disclaimer
+
+This project is at a very early stage (in fact, it was assembled for a one-off task and then forgotten) and most likely you will struggle to make use of it ¯\_(ツ)_/¯ But PRs are most welcome! 
+
 ## What's implemented and what's planned
 
 - [x] Multiple users
