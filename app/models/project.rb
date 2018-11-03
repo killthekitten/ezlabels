@@ -1,15 +1,15 @@
 class Project < ApplicationRecord
   SAMPLE_SIZE = 50
 
-  has_many :pictures
-  has_many :picture_classes
+  has_many :labels
+  has_many :label_classes
 
   validates :title, presence: true
 
   def generate_samples_for(user)
     ActiveRecord::Base.connection.execute <<-SQL
       update
-        pictures
+        labels
       set
         user_id = #{user.id}
       where
@@ -17,9 +17,9 @@ class Project < ApplicationRecord
           select
             id
           from
-            pictures
+            labels
           where
-            pictures.user_id is null
+            items.user_id is null
           order by
             random()
           limit

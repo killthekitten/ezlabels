@@ -21,13 +21,13 @@ class PieData
         pc.name label_name,
         rejected
       from
-        pictures
+        labels
       left join
-        picture_classes_pictures pcp on pcp.picture_id = pictures.id
+        label_classes_project_labels pcp on pcp.label_id = labels.id
       left join
-        picture_classes pc on pcp.picture_class_id = pc.id
+        label_classes pc on pcp.label_class_id = pc.id
       where
-        pictures.project_id = #{project.id}
+        labels.project_id = #{project.id}
       group by
         rejected,
         pc.id

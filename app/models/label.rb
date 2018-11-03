@@ -1,5 +1,5 @@
-class Picture < ApplicationRecord
-  has_and_belongs_to_many :picture_classes
+class Label < ApplicationRecord
+  has_and_belongs_to_many :label_class
   belongs_to :project
   belongs_to :user, required: false
   validates :url, presence: true

@@ -1,6 +1,6 @@
 - model_class = Project
 .page-header
-  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  h1=t '.title', default: model_class.model_name.human.pluralize.titleize
 table.table.table-striped
   thead
     tr
@@ -8,7 +8,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:title)
       th= model_class.human_attribute_name(:content)
       th= model_class.human_attribute_name(:created_at)
-      th=t '.actions', :default => t("helpers.actions")
+      th=t '.actions', default: t("helpers.actions")
   tbody
     - @projects.each do |project|
       tr
@@ -17,9 +17,9 @@ table.table.table-striped
         td= truncate project.content
         td=l project.created_at
         td
-          = link_to t('.show', :default => t("helpers.links.show")), project_path(project), :class => 'btn btn-default btn-xs'
+          = link_to "Show", project_path(project), class: 'btn btn-default btn-xs'
           '
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_project_path(project), :class => 'btn btn-default btn-xs'
+          = link_to "Edit", edit_project_path(project), class: 'btn btn-default btn-xs'
           '
           = link_to 'Join', project_next_picture_path(project), class: 'btn btn-primary btn-xs'
-= link_to t('.new', :default => t("helpers.links.new")), new_project_path, :class => 'btn btn-primary'
+= link_to "Create new", new_project_path, class:'btn btn-primary'
