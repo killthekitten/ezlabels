@@ -1,10 +1,16 @@
 class Project < ApplicationRecord
+  TYPES = %w(image_classification).freeze
   SAMPLE_SIZE = 50
 
+  self.inheritance_column = :_type_disabled
+
   has_many :pictures
-  has_many :picture_classes
+  has_many :picture_classes, inverse_of: :project
 
   validates :title, presence: true
+  validates :type, presence: true
+
+  accepts_nested_attributes_for :picture_classes, reject_if: :all_blank
 
   def generate_samples_for(user)
     ActiveRecord::Base.connection.execute <<-SQL
@@ -19,7 +25,8 @@ class Project < ApplicationRecord
           from
             pictures
           where
-            pictures.user_id is null
+            pictures.user_id is null and
+            project_id = #{id}
           order by
             random()
           limit

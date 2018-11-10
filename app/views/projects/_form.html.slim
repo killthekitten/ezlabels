@@ -1,6 +1,15 @@
 = simple_form_for @project, :html => { :class => "form-horizontal" } do |f|
   = f.input :title
   = f.input :content
+  = f.input :type, collection: Project::TYPES
+
+  / - if @project.persisted? && @project.type == 'image_classification'
+  /   .row
+  /     = simple_fields_for :picture_classes do |ff|
+  /       = render 'picture_class_fields', f: ff
+
+  /   = link_to_add_association 'add new class', f, :picture_classes
+
   = f.button :submit, :class => 'btn btn-primary'
   '
   = link_to t('.cancel', :default => t("helpers.links.cancel")), projects_path, :class => 'btn btn-default'

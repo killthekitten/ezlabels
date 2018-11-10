@@ -3,13 +3,17 @@
   h1=t '.title', :default => model_class.model_name.human.titleize
 
 p
-  strong= model_class.human_attribute_name(:title) + ':'
+  strong #{model_class.human_attribute_name(:title)}:
   br
   = @project.title
 p
-  strong= model_class.human_attribute_name(:content) + ':'
+  strong #{model_class.human_attribute_name(:content)}:
   br
   = simple_format @project.content
+p
+  strong #{model_class.human_attribute_name(:type)}:
+  br
+  = @project.type
 
 .row
   .col-sm-12

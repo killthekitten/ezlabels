@@ -9,8 +9,12 @@
         li= message
 
   .thumbnail
-    img src=picture.url
-
+    - if picture.thumb_url.present?
+      = link_to picture.url, target: :blank do
+        img src=picture.thumb_url style="max-height: 300px"
+    - else
+      = "Thumbnail not provided, use original:"
+      = link_to picture.url, picture.url, target: :blank
 
   .panel.panel-default
     .panel-body
@@ -21,7 +25,7 @@
 
       .col-sm-6
         = f.input :rejected, as: :hidden
-        
+
         - if picture.inspected?
           p
             i Current status: #{picture.rejected? ? 'Rejected' : 'Approved'}
